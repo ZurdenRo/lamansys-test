@@ -4,6 +4,8 @@ import java.time.Duration;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -11,7 +13,7 @@ import com.challenge.pages.ebay.HomePage;
 
 public class TestPurchaseProduct {
 
-ChromeDriver driver;
+	ChromeDriver driver;
 	
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() {
@@ -25,8 +27,13 @@ ChromeDriver driver;
 		HomePage hp = new HomePage(driver);
 		hp.searchProduct();
 		String price = hp.getPriceFirstElement();
-		System.out.println(price);
+		Assert.assertNotEquals(price, "");
+		Assert.assertTrue(price.contains("USD"));
 	}
 	
+	@AfterClass(alwaysRun = true)
+	public void afterClass() {
+		driver.close();
+	}
 	
 }

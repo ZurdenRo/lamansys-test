@@ -28,7 +28,7 @@ public class HomePage extends BasePage{
 	public String getPriceFirstElement() {
 		this.visibilityOfElementLocated(this.listProducts);
 		WebElement first = this.getInnerElement(this.listProducts, this.firstProduct);
-		return first.getAttribute("innerHTML");
+		return this.getAttribute(first, "innerText");
 	}
 	
 }

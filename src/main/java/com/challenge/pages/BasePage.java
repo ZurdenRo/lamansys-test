@@ -48,6 +48,10 @@ public abstract class BasePage {
 	protected String getAttribute(By path, String attribute) {
 		return this.driver.findElement(path).getAttribute(attribute);
 	}
+
+	protected String getAttribute(WebElement path, String attribute) {
+		return path.getAttribute(attribute);
+	}
 	
 	protected void visibilityOfElementLocated(By locator) {
 		this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
