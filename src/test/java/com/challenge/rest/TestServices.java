@@ -22,7 +22,7 @@ public class TestServices {
 	public void testUser() {
 		serviceUsers = new ServiceUsers();
 		users = serviceUsers.getUserById(1);
-		System.out.println(users.getEmail());
+		Assert.assertEquals(users.getEmail(), "Sincere@april.biz");
 	}
 	
 	@Test(groups = "userAll")
